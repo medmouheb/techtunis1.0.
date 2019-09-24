@@ -45,8 +45,8 @@ class ShoppingCart extends Component {
             </Modal>
         )
         return (
-            <div>
-                <div className="shoppingCarts">
+            
+                <div className="shoppingCarts" style={{display : window.screen.width >= 1000?"flex":""}}>
                     {removeModale}
                     <div >
                         {this.props.items.map((el, i) => {
@@ -66,7 +66,7 @@ class ShoppingCart extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            
         )
     }
 }

@@ -7,13 +7,14 @@ import Footer from '../common/footer/footer'
 import CategoriesNav from '../common/cleanNav/categoriesNav'
 import FixedDownBar from '../common/fixed down bar/fixedDownBar'
 import CarousalProduct from '../homePage/Carousel/CarausalProduct'
+import Sidebar from '../productDetailsPage/sidebar/sidebar'
 class ProductListe extends Component {
     render() {
         const {discountProduct,CategorieTab,menu,footer} = this.props
         return(
             <Container>
                 <NavBar data={menu}/>
-                <CategoriesNav data={CategorieTab}/>
+                {window.screen.width >= 1000?<CategoriesNav data={CategorieTab} />:<Sidebar data={CategorieTab} />}
                 <Row>
                     <ProductListViewer/>
                     <FixedDownBar/>

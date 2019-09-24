@@ -102,60 +102,130 @@ class GoodZoom extends Component {
             this.setState({ hide: false })
             imageZoom()
         }
-        return (
-            <div className="img-zoom-container">
-                <div id="img-zoom-container">
-                    <div >
-                        <div id="imgToZoom" onMouseOver={handleShow} onMouseOut={handlehide}>
-                            <div className="img-zoom-lens" ref="lens" />
-                            <img id="myimage" src={this.props.data[this.state.currentIndex]} width="300" height="240" ref="myimage" />
-                            <img id="normalImg" src={this.props.data[this.state.currentIndex]} width="300" height="240" />
-                        </div>
+        const regularView = () => {
+            return (
+                <div className="img-zoom-container" >
+                    <div id="img-zoom-container">
+                        <div >
+                            <div id="imgToZoom" onMouseOver={handleShow} onMouseOut={handlehide}>
+                                <div className="img-zoom-lens" ref="lens" />
+                                <img id="myimage" src={this.props.data[this.state.currentIndex]} width="300" height="240" ref="myimage" />
+                                <img id="normalImg" src={this.props.data[this.state.currentIndex]} width="300" height="240" />
+                            </div>
 
-                        <div className="zommGalary">
-                            {this.props.data.map((el, i) => {
-                                return (
-                                    <img onClick={() => { handleClick(i) }} src={el} width="80" height="50" />
-                                )
-                            })}
+                            <div className="zommGalary">
+                                {this.props.data.map((el, i) => {
+                                    return (
+                                        <img onClick={() => { handleClick(i) }} src={el} width="80" height="50" />
+                                    )
+                                })}
+                            </div>
                         </div>
-                    </div>
-                    <div style={{position:"relatif"}}> 
-                        <div style={{visibility: this.state.hide ? "hidden" : "", position:"absolute" ,zIndex:"1",width:"500px", margin: "20px" }} id="myresult" ref="myresult" className="img-zoom-result" />
-                        <div style={{ margin: "20px" }}>
-                            <Card style={{ width: '18rem', margin: "20px" }}>
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
+                        <div style={{ position: "relatif" }}>
+                            <div style={{ visibility: this.state.hide ? "hidden" : "", position: "absolute", zIndex: "1", width: "500px", margin: "20px" }} id="myresult" ref="myresult" className="img-zoom-result" />
+                            <div style={{ margin: "20px" }}>
+                                <Card style={{ width: '18rem', margin: "20px" }}>
+                                    <Card.Body>
+                                        <Card.Title>Card Title</Card.Title>
+                                        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+                                        <Card.Text>
+                                            Some quick example text to build on the card title and make up the bulk of
+                                            the card's content.
                                 </Card.Text>
-                                    <Card.Link href="#">Card Link</Card.Link>
-                                    <Card.Link href="#">Another Link</Card.Link>
-                                </Card.Body>
-                            </Card>
+                                        <Card.Link href="#">Card Link</Card.Link>
+                                        <Card.Link href="#">Another Link</Card.Link>
+                                    </Card.Body>
+                                </Card>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <Table striped bordered hover>
-                    <tbody>
-                        <tr>
-                            <td>1(cle)</td>
-                            <td>Mark(valeur)</td>
-                        </tr>
-                        <tr>
-                            <td>2(cle)</td>
-                            <td>Jacob(valeur)</td>
+                    <Table striped bordered hover>
+                        <tbody>
+                            <tr>
+                                <td>1(cle)</td>
+                                <td>Mark(valeur)</td>
+                            </tr>
+                            <tr>
+                                <td>2(cle)</td>
+                                <td>Jacob(valeur)</td>
 
-                        </tr>
-                        <tr>
-                            <td>3(cle)</td>
-                            <td >Larry the Bird(valeur)</td>
-                        </tr>
-                    </tbody>
-                </Table>
-            </div>
+                            </tr>
+                            <tr>
+                                <td>3(cle)</td>
+                                <td >Larry the Bird(valeur)</td>
+                            </tr>
+                        </tbody>
+                    </Table>
+                </div>
+            )
+        }
+        const mobileView = () => {
+            return (
+                <div className="img-zoom-container" style={{marginLeft:"30px"}}>
+                    <div id="img-zoom-container" style={{flexDirection:"column"}}>
+                        <div >
+                            <div id="imgToZoom" >
+                                <div className="img-zoom-lens" ref="lens" />
+                                <img id="myimage" src={this.props.data[this.state.currentIndex]} width="300" height="240" ref="myimage" />
+                                <img id="normalImg" src={this.props.data[this.state.currentIndex]} width="300" height="240" />
+                            </div>
+
+                            <div className="zommGalary">
+                                {this.props.data.map((el, i) => {
+                                    return (
+                                        <img onClick={() => { handleClick(i) }} src={el} width="80" height="50" />
+                                    )
+                                })}
+                            </div>
+                        </div>
+                        <div style={{ position: "relatif" }}>
+                            <div style={{ visibility: this.state.hide ? "hidden" : "", position: "absolute", zIndex: "1", width: "500px", margin: "20px" }} id="myresult" ref="myresult" className="img-zoom-result" />
+                            <div style={{ margin: "20px" }}>
+                                <Card style={{ width: '18rem', margin: "20px" }}>
+                                    <Card.Body>
+                                        <Card.Title>Card Title</Card.Title>
+                                        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+                                        <Card.Text>
+                                            Some quick example text to build on the card title and make up the bulk of
+                                            the card's content.
+                                </Card.Text>
+                                        <Card.Link href="#">Card Link</Card.Link>
+                                        <Card.Link href="#">Another Link</Card.Link>
+                                    </Card.Body>
+                                </Card>
+                            </div>
+                        </div>
+                    </div>
+                    <Table striped bordered hover>
+                        <tbody>
+                            <tr>
+                                <td>1(cle)</td>
+                                <td>Mark(valeur)</td>
+                            </tr>
+                            <tr>
+                                <td>2(cle)</td>
+                                <td>Jacob(valeur)</td>
+
+                            </tr>
+                            <tr>
+                                <td>3(cle)</td>
+                                <td >Larry the Bird(valeur)</td>
+                            </tr>
+                        </tbody>
+                    </Table>
+                </div>
+            )
+        }
+        const testView=()=>{
+            if(window.screen.width >= 1000){
+                return regularView()
+            }else{
+                return mobileView()
+            }
+            
+        }
+        return (
+            testView()
         )
     }
 }

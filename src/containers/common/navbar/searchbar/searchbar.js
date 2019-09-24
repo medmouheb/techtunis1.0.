@@ -14,7 +14,7 @@ class Searchbar extends Component {
 
       return (
 
-      <div className="search">
+      <div className="search" >
 
       <Form>
 

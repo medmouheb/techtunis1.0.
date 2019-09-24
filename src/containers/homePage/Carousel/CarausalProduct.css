@@ -23,3 +23,7 @@
 .CarousalProductButton > img{
     margin-top: 200%;
 }
+.alice-carousel__stage-item{
+    width: 150px !important;
+    margin-left: 15%
+}

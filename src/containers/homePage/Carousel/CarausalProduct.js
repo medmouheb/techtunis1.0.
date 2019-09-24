@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
-import { Card,Button } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import './CarausalProduct.css'
 import { connect } from 'react-redux'
-import {addItem} from '../../../store/actions/shoppingCart' 
-import {addToWishList} from '../../../store/actions/wishList'
+import { addItem } from '../../../store/actions/shoppingCart'
+import { addToWishList } from '../../../store/actions/wishList'
 import GridCard from "../../productListe/productListViewer/grid/cards/gridCard"
 import DetailLight from '../../common/detailLight/index'
 class CarousalProduct extends Component {
   state = {
     currentIndex: 0,
     itemsInSlide: 1,
-    responsive: { 0: { items: window.screen.width <= 1000 ? 2 : 4 } },
+    responsive: { 0: { items: window.screen.width <= 1000 ? 1 : 4 } },
     galleryItems: this.galleryItems(),
   }
   galleryItems() {
     return (
       this.props.data.map((el, i) => {
         return (
-          <DetailLight cardIndex={i} cardType="carousal" data={el}/>
+          <DetailLight cardIndex={i} cardType="carousal" data={el} />
         )
       })
     )
@@ -48,9 +48,8 @@ class CarousalProduct extends Component {
 
     return (
       <div className="CarousalProduct" >
-        <div className="CarousalProductButton">
-        <img src="https://image.flaticon.com/icons/svg/149/149124.svg" width={60} onClick={() => { this.setState({ currentIndex: this.state.currentIndex - 1 }) }}/>
-        </div>
+        {window.screen.width > 1000 ? <div className="CarousalProductButton"><img src="https://image.flaticon.com/icons/svg/149/149124.svg" width={60} onClick={() => { this.setState({ currentIndex: this.state.currentIndex - 1 }) }} /></div> : <span />}
+
         <AliceCarousel
           mouseDragEnabled={true}
           items={galleryItems}
@@ -59,12 +58,12 @@ class CarousalProduct extends Component {
           onInitialized={this.handleOnSlideChange}
           onSlideChanged={this.handleOnSlideChange}
           onResized={this.handleOnSlideChange}
-          dotsDisabled={true}
-          buttonsDisabled={true}
+          dotsDisabled={window.screen.width > 1000}
+          buttonsDisabled={window.screen.width > 1000}
         />
-        <div className="CarousalProductButton">
-        <img src="https://image.flaticon.com/icons/svg/149/149123.svg" width={60} onClick={() => { this.setState({ currentIndex: this.state.currentIndex + 1 }) }}/>
-        </div>
+        {window.screen.width > 1000 ? <div className="CarousalProductButton"><img src="https://image.flaticon.com/icons/svg/149/149123.svg" width={60} onClick={() => { this.setState({ currentIndex: this.state.currentIndex + 1 }) }} /></div> : <span />}
+
+        
       </div>
     )
   }
@@ -72,8 +71,8 @@ class CarousalProduct extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      addItem: (data) => dispatch(addItem(data)),
-      addToWishList: (data) => dispatch(addToWishList(data)),
+    addItem: (data) => dispatch(addItem(data)),
+    addToWishList: (data) => dispatch(addToWishList(data)),
   }
 }
 export default connect(null, mapDispatchToProps)(CarousalProduct)

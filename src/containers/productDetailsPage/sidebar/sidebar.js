@@ -23,17 +23,17 @@ class Sidebar extends Component{
         const showMenu=()=>{
             if (this.state.parent===0){
                 return this.props.data.map((element,index)=>{
-                  return element.chiledrens.length ? <a href="#" onClick={()=>{this.setState({parent:1,child:index})}}>{element.name}</a>: <a href="#">{element.name}</a> 
+                  return element.category.length ? <a href="#" onClick={()=>{this.setState({parent:1,child:index})}}>{element.name}</a>: <a href={element.liink}>{element.name}</a> 
                 })
             }
             else if(this.state.parent===1){
-                return this.props.data[this.state.child].chiledrens.map((element,index)=>{
-                    return element.chiledrens.length ? <a href="#" onClick={()=>{this.setState({parent:2,grandchild:index})}}>{element.name}</a>: <a href="#">{element.name}</a> 
+                return this.props.data[this.state.child].category.map((element,index)=>{
+                    return element.list.length ? <a href="#" onClick={()=>{this.setState({parent:2,grandchild:index})}}>{element.name}</a>: <a href={element.liink}>{element.name}</a> 
                 })
             }
             else{
-                return this.props.data[this.state.child].chiledrens[this.state.grandchild].chiledrens.map(element=>{
-                    return <a href="#">{element.name}</a>
+                return this.props.data[this.state.child].category[this.state.grandchild].list.map(element=>{
+                    return <a href={element.liink}>{element.name}</a>
                 })
             }
         }
