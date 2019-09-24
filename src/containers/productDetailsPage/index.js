@@ -14,8 +14,7 @@ class Productdetail extends Component{
         return(
             <div  >
                 <NavBar data={menu}/>
-                <CategoriesNav data={CategorieTab}/>
-                <Sidebar data={sidemenu}/>
+                {window.screen.width >= 1000?<CategoriesNav data={CategorieTab} />:<Sidebar data={CategorieTab} />}
                 <GoodZoom data={ProductImagelist}/>
                 <Footer data={footer}/>
                 <FixedDownBar/>

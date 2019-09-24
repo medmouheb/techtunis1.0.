@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import './navbar.css'
 import { userLogin } from '../../../store/actions/login'
 import { userSignup } from '../../../store/actions/signup'
-
+import SidebarMobile from '../../productDetailsPage/sidebar/sidebarMobileEX'
 let signupData = [
   {
     type: "input",
@@ -65,7 +65,7 @@ class NavBar extends Component {
       </Modal>
     )
     const WhenConnected = (
-      <Form inline style={{ display: !this.props.isConnected ? "" : "none" }}>
+      <Form inline style={{ display: !this.props.isConnected ? "" : "none" }} >
         <Button
           variant="danger"
           className="signUpButton"
@@ -145,11 +145,11 @@ class NavBar extends Component {
             })}
           </Nav>
           <Searchbar />
-          <div className="navbarButtons" >
+          <div className="navbarButtons" style={{position:window.screen.width<1000?"relative":"absolute"}}>
             {WhenConnected}
             {WhenDisconnected}
           </div>
-
+            {window.screen.width<1000?<SidebarMobile data={this.props.CategorieTab}/>:<span/>}
         </Navbar.Collapse>
       </Navbar>
 
@@ -161,6 +161,7 @@ const mapStateToProps = (state) => {
   return {
     isConnected: state.currentUserReducer.isConnected,
     totalitems: state.ShoppingCartReducer.totalitems,
+    CategorieTab:state.MegaMenuReducers.CategorieTab
 
   }
 }

@@ -41,7 +41,16 @@
   position: relative;
   display: flex;
   padding: 2%;
-  width: 22%;
   z-index: 5 ;
 
+}
+@media screen and (min-width: 480px) {
+  .search{ 
+    position: relative;
+    display: flex;
+    padding: 2%;
+    width: 100%;
+    z-index: 5 ;
+  
+  }
 }

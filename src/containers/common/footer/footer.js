@@ -3,7 +3,7 @@ import "./footer.css"
 class Footer extends Component {
     render() {
       return (
-        <footer  class="page-footer font-small unique-color-dark">
+        <footer style={{marginBottom:"50px"}}  class="page-footer font-small unique-color-dark">
           <br/>
           <br/>
 
